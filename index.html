@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etch-a-Steck</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <button class="size-btn">Set Grid Size</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <button class="size-btn">Set Grid Size</button> -->
     <button class="rainbow">Rainbow</button>
     <button class="darken-btn">Darken</button>
     <button class="toggle-grid-line">Toggle grid lines</button>
     <button class="clear">Clear</button>
     <div id="grid-container" class="container show-border"></div>
+
+    <div class="slider-cont">
+      <div class="slider-value">16x16</div>
+      <input class="slider" type="range" min="1" max="100" value="16">
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
