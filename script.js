@@ -1,8 +1,9 @@
-const sizeBtn = document.querySelector(".size-btn");
-const rainbowBtn = document.querySelector(".rainbow");
-const darkenBtn = document.querySelector(".darken-btn");
-const toggelgrid = document.querySelector(".toggle-grid-line");
-const clearBtn = document.querySelector(".clear");
+const colorPicker = document.querySelector("#color-picker");
+const penBtn = document.querySelector("#pen-btn");
+const rainbowBtn = document.querySelector("#rainbow");
+const darkenBtn = document.querySelector("#darken-btn");
+const toggelgrid = document.querySelector("#toggle-grid-line");
+const clearBtn = document.querySelector("#clear");
 const container = document.querySelector("#grid-container");
 const slider = document.querySelector(".slider");
 
@@ -23,17 +24,11 @@ function fillGrid() {
 
     sqr.addEventListener("dragstart", (e) => e.preventDefault()); // stop default drag behaviour of browser
 
-    sqr.addEventListener("mouseover", () => {
-      if (isDrawing) {
-        sqr.classList.add("draw");
-      }
-    });
-
     container.appendChild(sqr);
   }
 }
 
-let sliderValue = document.querySelector(".slider-value");
+const sliderValue = document.querySelector(".slider-value");
 
 slider.addEventListener("input", () => {
   container.innerHTML = "";
@@ -42,12 +37,16 @@ slider.addEventListener("input", () => {
   fillGrid();
 });
 
+let currentMode = "penMode";
+
 document.addEventListener("mouseover", (e) => {
-  if (isDrawing) {
-    if (e.target.classList.contains("rainbowMode")) {
+  if (isDrawing && e.target.classList.contains("sqr")) {
+    if (currentMode === "penMode") {
+      e.target.style.backgroundColor = `${colorPicker.value}`;
+    } else if (currentMode === "rainbowMode") {
       e.target.style.backgroundColor = getRandomRGB();
-    }
-    if (e.target.classList.contains("darkenMode")) {
+      e.target.style.opacity = "1";
+    } else if (currentMode === "darkenMode") {
       e.target.style.backgroundColor = "black";
       let currOpc = parseFloat(e.target.style.opacity) || 0;
       if (currOpc < 1) {
@@ -57,59 +56,47 @@ document.addEventListener("mouseover", (e) => {
   }
 });
 
-function setRainbowMode() {
-  const square = document.querySelectorAll(".sqr");
-  square.forEach((s) => {
-    s.classList.toggle("rainbowMode");
-  });
-}
+penBtn.classList.add("active-button");
+
+penBtn.addEventListener("click", (e) => {
+  if (currentMode !== "penMode") {
+    currentMode = "penMode";
+    penBtn.classList.add("active-button");
+    rainbowBtn.classList.remove("active-button");
+    darkenBtn.classList.remove("active-button");
+  }
+});
 
 rainbowBtn.addEventListener("click", (e) => {
-  setRainbowMode();
-  e.target.classList.toggle("active-button");
+  if (currentMode === "rainbowMode") {
+    currentMode = "penMode";
+    rainbowBtn.classList.remove("active-button");
+    penBtn.classList.add("active-button");
+  } else {
+    currentMode = "rainbowMode";
+    rainbowBtn.classList.add("active-button");
+    penBtn.classList.remove("active-button");
+    darkenBtn.classList.remove("active-button");
+  }
 });
-
-function setDarkenMode() {
-  const square = document.querySelectorAll(".sqr");
-  square.forEach((s) => {
-    s.classList.toggle("darkenMode");
-  });
-}
 
 darkenBtn.addEventListener("click", (e) => {
-  setDarkenMode();
-  e.target.classList.toggle("active-button");
+  if (currentMode === "darkenMode") {
+    currentMode = "penMode";
+    darkenBtn.classList.remove("active-button");
+    penBtn.classList.add("active-button");
+  } else {
+    currentMode = "darkenMode";
+    darkenBtn.classList.add("active-button");
+    penBtn.classList.remove("active-button");
+    rainbowBtn.classList.remove("active-button");
+  }
 });
-
-// rainbowBtn.addEventListener("click", () => {
-//   const sqr = document.querySelectorAll(".sqr");
-//   sqr.forEach((s) => {
-//     s.addEventListener("mouseover", () => {
-//       if (isDrawing) {
-//         s.style.backgroundColor = getRandomRGB();
-//       }
-//     });
-//   });
-// });
-
-// darkenBtn.addEventListener("click", () => {
-//   const sqr = document.querySelectorAll(".sqr");
-//   sqr.forEach((s) => {
-//     s.addEventListener("mouseover", () => {
-//       if (isDrawing) {
-//         s.style.backgroundColor = "black";
-//         let currOpc = parseFloat(s.style.opacity) || 0;
-//         if (currOpc < 1) {
-//           s.style.opacity = currOpc + 0.2;
-//         }
-//       }
-//     });
-//   });
-// });
 
 toggelgrid.addEventListener("click", () => {
   container.classList.toggle("show-border");
   container.classList.toggle("hide-border");
+  toggelgrid.classList.toggle("active-button");
 });
 
 clearBtn.addEventListener("click", () => {

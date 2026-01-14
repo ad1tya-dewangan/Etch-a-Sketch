@@ -27,11 +27,6 @@
   border: none;
 }
 
-.draw {
-  background-color: black;
-  opacity: 0.7;
-}
-
 .slider-cont {
   display: flex;
   flex-direction: column;
@@ -39,12 +34,38 @@
   padding-top: 15px;
 }
 
-.slider-value {
+.buttons-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-.slider {
+.button {
+  border: none;
+  font-size: 13px;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+/* 1. The Outer Box */
+#color-picker {
+  -webkit-appearance: none; /* Removes default browser styling */
+  -moz-appearance: none;
+  appearance: none;
+  width: 43px;
+  height: 45px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* 2. The Internal Color Circle (Chrome/Safari) */
+#color-picker::-webkit-color-swatch {
+  border-radius: 50%; /* Makes it a circle */
+  border: none;
 }
 
 .active-button {
-  background-color: grey;
+  border: solid 2px red;
 }

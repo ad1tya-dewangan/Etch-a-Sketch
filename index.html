@@ -7,21 +7,23 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- <button class="size-btn">Set Grid Size</button> -->
-     <div class="wrapper">
-        <div class="buttons-container">
-            <button class="rainbow">Rainbow</button>
-            <button class="darken-btn">Darken</button>
-            <button class="toggle-grid-line">Toggle grid lines</button>
-            <button class="clear">Clear</button>
-        </div>
-        <div id="grid-container" class="container show-border"></div>
-     </div>
+    <div class="wrapper">
+      <div class="buttons-container">
+        <input id="color-picker" type="color" value="#4c4c4c" />
+        <button class="button" id="pen-btn">Pen</button>
+        <button class="button" id="rainbow">Rainbow</button>
+        <button class="button" id="darken-btn">Darken</button>
+        <button class="button" id="toggle-grid-line">Grid Lines</button>
+        <button class="button" id="clear">Clear</button>
+      </div>
+      <div id="grid-container" class="container show-border"></div>
+    </div>
 
     <div class="slider-cont">
-        <div>Set the Grid Size</div>
+      <div style="font-weight: bold">Set the Grid Size</div>
       <div class="slider-value">16x16</div>
-      <input class="slider" type="range" min="1" max="100" value="16">
+      <input class="slider" type="range" min="1" max="100" value="16" />
+    </div>
 
     <script src="script.js"></script>
   </body>
