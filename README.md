@@ -12,4 +12,4 @@ This project is built by dynamically creating grids in the DOM without using can
 > Performance optimization through event delegation
 > Color logic on pen while drawing
 
-👉 [Live demo] ()
+👉 [Live demo](https://ad1tya-dewangan.github.io/Etch-a-Sketch/)
