@@ -1,8 +1,9 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Finger Paint", cursive;
 }
 
 .heading {
+  font-family: "Finger Paint", cursive;
   text-align: center;
   font-size: 50px;
   margin: 0;
@@ -21,9 +22,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
-  width: 450px;
-  height: 450px;
-  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+  width: 600px;
+  height: 600px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .sqr {
@@ -39,10 +40,17 @@ body {
 }
 
 .slider-cont {
+  margin-top: 30px;
+  font-size: 18px;
+  gap: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 15px;
+}
+
+.slider {
+  cursor: grab;
 }
 
 .buttons-container {
@@ -53,10 +61,37 @@ body {
 }
 
 .button {
+  /* width: 80px;
+  height: 40px;
   border: none;
-  font-size: 13px;
-  border-radius: 15px;
-  padding: 5px 10px;
+  font-size: 15px;
+  border-radius: 90px;
+  padding: 3px 8px;
+  background-color: rgb(89, 0, 255);
+  color: white;
+  font-weight: 700; */
+  /* Font & Basic Styling */
+  font-family: "Finger Paint", cursive;
+  font-size: 1rem;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+
+  /* The "Sketchy" Border */
+  border: 3px solid #333;
+  /* This uneven radius creates the hand-drawn look */
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+
+  /* Shadow for depth */
+  box-shadow: 4px 4px 0px #333;
+  outline: none;
+}
+
+.button:hover {
+  background-color: rgb(124, 185, 247); /* Very light mint */
+  transform: translate(-2px, -2px); /* Lifts the button slightly */
+  box-shadow: 6px 6px 0px #333; /* Deepens the shadow */
 }
 
 /* 1. The Outer Box */
@@ -64,8 +99,8 @@ body {
   -webkit-appearance: none; /* Removes default browser styling */
   -moz-appearance: none;
   appearance: none;
-  width: 43px;
-  height: 45px;
+  width: 63px;
+  height: 65px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -78,5 +113,7 @@ body {
 }
 
 .active-button {
-  border: solid 2px red;
+  background-color: rgb(124, 185, 247);
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #333;
 }
