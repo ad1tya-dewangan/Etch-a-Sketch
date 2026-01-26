@@ -16,6 +16,8 @@ Performance optimization through event delegation
 
 Color logic on pen while drawing
 
+Button Animation
+
 <a href="https://ad1tya-dewangan.github.io/Etch-a-Sketch/" target="_blank" rel="noopener noreferrer">
   🚀 Live Demo
 </a>
